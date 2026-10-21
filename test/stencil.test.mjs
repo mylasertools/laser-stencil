@@ -59,6 +59,24 @@ test('no cut line runs along the ends of a bridge', () => {
   }
 });
 
+test('a counter narrower than the bridge still gets a bridge in the chosen direction', () => {
+  const letter = [
+    [0, 0],
+    [10, 0],
+    [10, 20],
+    [0, 20],
+  ];
+  const counter = [
+    [5, 5],
+    [5.4, 9],
+    [4.6, 9],
+  ];
+  const r = stencilPolygons([letter, counter], { fillRule: 'evenodd', bridgeWidth: 1.5, direction: 'vertical' });
+  assert.equal(r.islands.length, 1);
+  assert.ok(r.bridges.length >= 1);
+  assert.ok(r.bridges.every((b) => b.angle === 90));
+});
+
 test('outline-only artwork is read as nested even-odd outlines', () => {
   const outline = svg(
     '<circle cx="30" cy="30" r="25" fill="none" stroke="red"/><circle cx="30" cy="30" r="15" fill="none" stroke="red"/>',

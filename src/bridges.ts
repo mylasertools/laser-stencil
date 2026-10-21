@@ -129,7 +129,8 @@ function candidates(frame: Frame, hole: number, width: number): Candidate[] {
     vmin = Math.min(vmin, v);
     vmax = Math.max(vmax, v);
   }
-  const half = (vmax - vmin) / 2,
+  const narrow = vmax - vmin < width && vmax - vmin >= width / 2,
+    half = (vmax - vmin) / 2,
     mid = vmin + half,
     step = Math.max(width / 4, (vmax - vmin) / 160),
     out: Candidate[] = [];
@@ -150,9 +151,11 @@ function candidates(frame: Frame, hole: number, width: number): Candidate[] {
         length = span.b - span.a,
         ok = true;
       for (const k of [-2, -1, 1, 2]) {
+        const at = s + (k * width) / 4;
+        if (narrow && (at <= vmin || at >= vmax)) continue;
         let best: Span | undefined,
           gap = Infinity;
-        for (const q of frame.spans(s + (k * width) / 4)) {
+        for (const q of frame.spans(at)) {
           const f = ends(q);
           if (!f || f.other !== e.other) continue;
           const d = Math.abs(f.edge - e.edge);
