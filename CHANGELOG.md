@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Fix: on some curved letters the cut outline ran along the outer end of a bridge, so a laser cut the bridge off. Bridges are now removed from the cut as full rectangles that reach past the outline.
+
 ## 0.1.0
 
 First release.

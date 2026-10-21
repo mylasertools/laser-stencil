@@ -34,6 +34,31 @@ test('the bridged result has no enclosed pieces left', () => {
   assert.equal(stencilPolygons(r.polygons, { fillRule: 'evenodd' }).islands.length, 0);
 });
 
+test('no cut line runs along the ends of a bridge', () => {
+  const cross = (a, b, c, d) => {
+    const r = (b[0] - a[0]) * (d[1] - c[1]) - (b[1] - a[1]) * (d[0] - c[0]);
+    if (Math.abs(r) < 1e-12) return false;
+    const t = ((c[0] - a[0]) * (d[1] - c[1]) - (c[1] - a[1]) * (d[0] - c[0])) / r;
+    const u = ((c[0] - a[0]) * (b[1] - a[1]) - (c[1] - a[1]) * (b[0] - a[0])) / r;
+    return t >= 0 && t <= 1 && u >= 0 && u <= 1;
+  };
+  const polygon = (cx, cy, radius) =>
+    Array.from({ length: 64 }, (_, i) => {
+      const a = (i / 64) * Math.PI * 2;
+      return [cx + radius * Math.cos(a), cy + radius * Math.sin(a)];
+    });
+  const r = stencilPolygons([polygon(12.5, 12.5, 12.5), polygon(12.5, 12.5, 7.5)], { fillRule: 'evenodd' });
+  const edges = r.polygons.flatMap((p) => p.map((pt, i) => [pt, p[(i + 1) % p.length]]));
+  assert.equal(r.bridges.length, 2);
+  for (const b of r.bridges) {
+    const a = (b.angle * Math.PI) / 180,
+      half = b.length / 2 + 0.1,
+      from = [b.center[0] - Math.cos(a) * half, b.center[1] - Math.sin(a) * half],
+      to = [b.center[0] + Math.cos(a) * half, b.center[1] + Math.sin(a) * half];
+    assert.equal(edges.filter(([c, d]) => cross(from, to, c, d)).length, 0);
+  }
+});
+
 test('outline-only artwork is read as nested even-odd outlines', () => {
   const outline = svg(
     '<circle cx="30" cy="30" r="25" fill="none" stroke="red"/><circle cx="30" cy="30" r="15" fill="none" stroke="red"/>',

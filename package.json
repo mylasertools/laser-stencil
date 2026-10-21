@@ -1,6 +1,6 @@
 {
   "name": "@mylasertools/laser-stencil",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Add bridges to stencils so the middles of letters and shapes don't fall out. SVG, TypeScript, CLI and browser.",
   "type": "module",
   "license": "MIT",

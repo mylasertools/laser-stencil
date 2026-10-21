@@ -349,9 +349,10 @@ export function stencil(
             message: `Island ${id} has room for ${chosen.length} of ${count} bridges.`,
           });
         for (const c of chosen) {
-          const kept = intersect([toPath(bridgeShape(c, width))], material, FillRule.EvenOdd);
+          const shape = toPath(bridgeShape(c, width));
+          const kept = intersect([shape], material, FillRule.EvenOdd);
           if (!kept.length) continue;
-          keep.push(...kept);
+          keep.push(shape);
           island.bridges++;
           bridges.push({
             island: id,
