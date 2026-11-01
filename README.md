@@ -5,9 +5,9 @@
 [![npm](https://img.shields.io/npm/v/%40mylasertools%2Flaser-stencil?color=d9483b)](https://www.npmjs.com/package/@mylasertools/laser-stencil)
 [![MIT](https://img.shields.io/badge/license-MIT-d9483b)](LICENSE)
 
-**[Try the live demo →](https://mylasertools-com.github.io/laser-stencil/demo/)** · [API](#api) · [CLI](#cli) · [Report an issue](https://github.com/mylasertools-com/laser-stencil/issues)
+**[Try the live demo →](https://mylasertools.github.io/laser-stencil/demo/)** · [API](#api) · [CLI](#cli) · [Report an issue](https://github.com/mylasertools/laser-stencil/issues)
 
-![Without bridges, the middles of O, D and B fall out of the stencil. With laser-stencil, bridges hold them in place.](https://raw.githubusercontent.com/mylasertools-com/laser-stencil/main/docs/assets/hero.gif)
+![Without bridges, the middles of O, D and B fall out of the stencil. With laser-stencil, bridges hold them in place.](https://raw.githubusercontent.com/mylasertools/laser-stencil/main/docs/assets/hero.gif)
 
 TypeScript · ESM + CommonJS · Browser + Node.js 20+ · MIT
 
@@ -21,7 +21,7 @@ Cut an **O** out of card, vinyl, mylar or plywood and its middle drops out. The 
 2. For each island, it looks for the shortest straight crossings to the surrounding sheet, in the direction you prefer.
 3. It places bridges on opposite sides of the island, checks the full bridge width, and keeps the bridge material in the cut.
 
-![Type any text, change the font, bridge width, direction and count. Bridges update live.](https://raw.githubusercontent.com/mylasertools-com/laser-stencil/main/docs/assets/live.gif)
+![Type any text, change the font, bridge width, direction and count. Bridges update live.](https://raw.githubusercontent.com/mylasertools/laser-stencil/main/docs/assets/live.gif)
 
 ## Install
 
