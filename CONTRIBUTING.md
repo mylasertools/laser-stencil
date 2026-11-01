@@ -28,7 +28,3 @@ Demo fonts are Archivo Black, Alfa Slab One and Rubik Mono One, all under the SI
 - `src/cli.ts`: the command line tool.
 - `demo/`: a framework-free consumer of the built package.
 - `scripts/`: build, demo server, examples and GIF capture.
-
-## Publishing the demo
-
-`npm run build:site` assembles the demo into `site/`. It is published from the `gh-pages` branch.
