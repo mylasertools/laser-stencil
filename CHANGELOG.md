@@ -2,6 +2,7 @@
 
 ## 0.1.1
 
+- The README covers installing and using the package; development commands moved to CONTRIBUTING.md.
 - Fix: on some curved letters the cut outline ran along the outer end of a bridge, so a laser cut the bridge off. Bridges are now removed from the cut as full rectangles that reach past the outline.
 - Fix: a counter narrower than the bridge (down to half its width), like the middle of a thin A, now gets a bridge in the chosen direction instead of a diagonal one.
 

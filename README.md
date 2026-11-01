@@ -142,18 +142,6 @@ Errors are thrown as `StencilError` with a stable `code`.
 - Islands inside islands (a ring inside an O) are bridged to their own surroundings, never across the counter.
 - Bridge width is your call. Around 1 to 2 mm suits card and vinyl at 40 mm letter size; thicker sheets and larger letters want more.
 
-## Development
-
-```sh
-npm ci
-npm run check      # build, tests, bundle size
-npm run demo       # http://127.0.0.1:4175/demo/
-npm run capture    # regenerate the README GIFs (needs ffmpeg)
-npm run examples   # regenerate examples/
-```
-
-Demo fonts are Archivo Black, Alfa Slab One and Rubik Mono One, all under the SIL Open Font License 1.1 and used only by the demo. See [demo/fonts](demo/fonts/README.md). Clipper2 is bundled under the Boost Software License; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
-
 ## License
 
-MIT © MyLaserTools
+MIT © MyLaserTools. Clipper2 is bundled under the Boost Software License; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
